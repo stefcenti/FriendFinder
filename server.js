@@ -33,30 +33,7 @@ app.get('/survey', function(req, res){
 	console.log("server get('/survey')");
 });
 
-// Search for Specific Friend (or all friends) - provides JSON
-app.get('/data/:friends?', function(req, res){
-	console.log("server get('/data/:friends?')");
 
-	var chosen = req.params.friendsAvail;
-
-	if(chosen){
-		console.log(chosen);
-
-		for (var i=0; i <friends.length; i++){
-
-			if (chosen == friends[i].routeName){
-				res.json(friends[i]);
-				return;
-			}
-		}
-
-		res.json(false);
-	}
-
-	else{
-		res.json(friends);
-	}
-})
 */
 
 // Starts the server to begin listening 

@@ -203,7 +203,6 @@
 
     // Capture the form inputs 
     $("#submit").on("click", function(){
-console.log("1")
 
     	// Form validation
     	function validateForm() {
@@ -220,7 +219,6 @@ console.log("1")
 		  })
 		  return isValid;
 		}
-console.log("2")
 
 		// If all required fields are filled
 		if (validateForm() == true)
@@ -236,8 +234,7 @@ console.log("2")
 	    	var currentURL = window.location.origin;
 
 	    	// AJAX post the data to the friends API. 
-	    	$.post(currentURL + "/app/data/friends", userData, function(data){
-console.log("3")
+	    	$.post(currentURL + "/api/friends", userData, function(data){
 	    		// Grab the result from the AJAX post so that the best match's name and photo are displayed.
 	    		$("#matchName").text(data.name);
 	    		$('#matchImg').attr("src", data.photo);

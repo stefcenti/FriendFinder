@@ -17,16 +17,44 @@ module.exports = function(app) {
 
 	// Display a list of possible friends in JSON format.
 	app.get('/api/friends', function(req, res){
+
+		console.log("server get(/api/friends)");
+
 		res.json(friends.friendList);
 	});
 
-	// Heart of the application:
-	//
+	// Search for Specific Friend (or all friends) - provides JSON
+	app.get('/api/:friends?', function(req, res){
+		console.log("server get(/api/:friends?)");
+
+		var chosen = req.params.friends;
+
+		if(chosen){
+			console.log(chosen);
+
+			for (var i=0; i <friends.length; i++){
+
+				if (chosen == friends[i].routeName){
+					res.json(friends[i]);
+					return;
+				}
+			}
+
+			res.json(false);
+		}
+
+		else{
+			res.json(friends);
+		}
+	});
+
 	// Handle the incoming survey results
 	//
 	// Check for compatibility and display the most compatible friend
 	app.post('/api/friends', function(req, res){
-		res.json(req.body.findFriend());
+		console.log("server post(/api/friends");
+
+		res.json(friends.findFriend(req.body.scores));
 	});
 
 }

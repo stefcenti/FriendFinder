@@ -8,7 +8,7 @@
 /*
 /******/
 
-var friends = function() {
+function FriendFinder() {
 
 	// Hard-code Data for Friend Data for Now
 	// =============================================================
@@ -51,8 +51,9 @@ var friends = function() {
 	];
 
 	this.findFriend = function(scores) {
-		return this.friends(Math.floor(Math.random() * this.friends.length) + 1);
+		console.log("findFriend()");
+		return this.friendList[(Math.floor(Math.random() * this.friendList.length) + 1)];
 	}
 }
 
-module.exports = friends;
+module.exports = new FriendFinder();

@@ -54,7 +54,7 @@ module.exports = function(app) {
 	app.post('/api/friends', function(req, res){
 		console.log("server post(/api/friends");
 
-		res.json(friends.findFriend(req.body.scores));
+		res.json(friends.findFriend(req.body));
 	});
 
 }

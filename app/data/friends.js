@@ -50,7 +50,7 @@ function FriendFinder() {
 		},
 	];
 
-	this.findFriend = function(scores) {
+	this.findFriend = function(newUser) {
 		console.log("findFriend()");
 
 		// This code returns a random friend:
@@ -88,7 +88,7 @@ function FriendFinder() {
 			var diff = 0;
 
 			for (var j=0; j<fScores.length; j++) {
-				diff += Math.abs(fScores[j] - scores[j]);
+				diff += Math.abs(fScores[j] - newUser.scores[j]);
 			}
 
 			if (diff < bestRating) {
@@ -98,6 +98,9 @@ function FriendFinder() {
 				bestIndex = i; // set friendList[i] as the user with smallest difference
 			}
 		}
+
+		// Add the new user to the list of friends
+		this.friendList.push(newUser);
 
 		return this.friendList[bestIndex];
 	}
